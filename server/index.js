@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken');
 const { v4: uuidv4 } = require('uuid');
 const Database = require('better-sqlite3');
 
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 const JWT_SECRET = process.env.JWT_SECRET || 'taskflow_secret_2024_change_in_prod';
@@ -62,6 +63,7 @@ db.exec(`
   );
 `);
 
+app.get('/api/health', (req, res) => res.json({ status: 'ok' }));
 // ── Middleware ───────────────────────────────────────────────────────────────
 app.use(cors());
 app.use(express.json());
